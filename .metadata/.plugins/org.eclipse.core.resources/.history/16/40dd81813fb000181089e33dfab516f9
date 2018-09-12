@@ -1,0 +1,59 @@
+package chain;
+
+import java.awt.EventQueue;
+
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import java.awt.Dimension;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+import com.sun.prism.Image;
+import java.awt.Color;
+
+public class OXGameRegister {
+
+	private JFrame frame;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					OXGameRegister window = new OXGameRegister();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public OXGameRegister() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.getContentPane().setBackground(new Color(0, 0, 0));
+		frame.getContentPane().setLayout(null);
+		
+		JLabel logoOx = new JLabel("New label");
+		logoOx.setBounds(122, 153, 273, 163);
+		frame.getContentPane().add(logoOx);
+		frame.setBackground(new Color(0, 0, 0));
+		frame.setSize(new Dimension(800, 600));
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		logoOx.setIcon(new ImageIcon(this.getClass().getResource("/OX_logo.png").getFile()));
+
+		
+	}
+}

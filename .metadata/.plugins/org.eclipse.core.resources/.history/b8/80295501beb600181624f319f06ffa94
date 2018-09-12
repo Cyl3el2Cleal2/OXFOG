@@ -1,0 +1,19 @@
+import java.net.UnknownHostException;
+import com.mongodb.*;
+public class connect {
+private String url = "mongodb://ox:oxox@125.27.10.67:27017/OX";
+private MongoClient mongo =null;
+DB db;
+	public DB getConnect() {
+		
+		mongo = new MongoClient(new MongoClientURI(url));
+		db = mongo.getDB("OX");
+		
+		return db;
+	}
+	public String testConnect() {
+		getConnect();
+		return 	db.toString() + "\nStatus : Connected";
+	}
+
+}

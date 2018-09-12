@@ -1,0 +1,16 @@
+import com.mongodb.DB;
+
+public class HOW_TO_USE {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+//		test connection
+		System.out.println(new connect().testConnect());
+		
+//		create DB for query data
+		DB x = new connect().getConnect();
+		
+	}
+
+}

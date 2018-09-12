@@ -1,0 +1,167 @@
+import java.awt.EventQueue;
+
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import java.awt.Dimension;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
+import com.sun.prism.Image;
+import java.awt.Color;
+import javax.swing.SwingConstants;
+import java.awt.Component;
+import java.awt.Font;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import java.awt.Point;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.JTextArea;
+import javax.swing.JPasswordField;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class OXGameRegister {
+
+	private JFrame frame;
+	private JTextField txtUser;
+	private JPasswordField txtPass;
+	private JPasswordField txtRepass;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					OXGameRegister window = new OXGameRegister();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public OXGameRegister() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.setLocation(new Point(1500, 1500));
+		frame.setResizable(false);
+		frame.setLocationByPlatform(true);
+		frame.getContentPane().setBackground(new Color(0, 0, 0));
+		frame.getContentPane().setLayout(null);
+		frame.setBackground(new Color(0, 0, 0));
+		frame.setSize(new Dimension(800, 600));
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		JLabel lblNewLabel = new JLabel("Username:");
+		lblNewLabel.setForeground(new Color(255, 255, 255));
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 22));
+		lblNewLabel.setBounds(323, 107, 183, 81);
+		frame.getContentPane().add(lblNewLabel);
+		
+		JLabel lblPassword = new JLabel("Password:");
+		lblPassword.setForeground(Color.WHITE);
+		lblPassword.setFont(new Font("Tahoma", Font.BOLD, 22));
+		lblPassword.setBounds(323, 190, 183, 81);
+		frame.getContentPane().add(lblPassword);
+		
+		txtUser = new JTextField();
+		txtUser.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		txtUser.setBounds(518, 134, 193, 29);
+		frame.getContentPane().add(txtUser);
+		txtUser.setColumns(10);
+		
+		JLabel lblRepassword = new JLabel("Re-Password:");
+		lblRepassword.setForeground(Color.WHITE);
+		lblRepassword.setFont(new Font("Tahoma", Font.BOLD, 22));
+		lblRepassword.setBounds(323, 279, 183, 81);
+		frame.getContentPane().add(lblRepassword);
+		
+		JButton btnSummit = new JButton("Summit");
+		btnSummit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(txtUser.getText().equals("")) {
+					JOptionPane.showMessageDialog(null, "กรุณาป้อน Username");
+					return;
+				}
+				if(new String(txtPass.getPassword()).equals("")) {
+					JOptionPane.showMessageDialog(null, "กรุณาป้อน Password");
+					return;
+				}
+				if(new String(txtRepass.getPassword()).equals(""))  {
+					JOptionPane.showMessageDialog(null, "กรุณาป้อน Re-Password");
+					return;
+				}
+				if(new String(txtPass.getPassword()).length()<8) { 
+					JOptionPane.showMessageDialog(null, "กรุณาป้อน Password 8 ตัว");
+					return;
+				}
+				
+				if(!new String(txtRepass.getPassword()).equals(new String(txtPass.getPassword()))) { 
+					JOptionPane.showMessageDialog(null, "กรุณาป้อน Password ให้ตรงกัน");
+					return;
+				}
+				JOptionPane.showMessageDialog(null, "สำเร็จ Your Username: "+txtUser.getText()
+													+" Password: "+(new String(txtPass.getPassword())));
+				
+			}
+		});
+		btnSummit.setAlignmentY(Component.TOP_ALIGNMENT);
+		btnSummit.setFont(new Font("Tahoma", Font.BOLD, 18));
+		btnSummit.setForeground(new Color(0, 0, 0));
+		btnSummit.setBackground(Color.GREEN);
+		btnSummit.setBounds(550, 418, 123, 48);
+		frame.getContentPane().add(btnSummit);
+		
+		JLabel lblRegister = new JLabel("Register");
+		lblRegister.setForeground(new Color(255, 0, 102));
+		lblRegister.setFont(new Font("Tahoma", Font.BOLD, 30));
+		lblRegister.setBounds(297, 29, 183, 81);
+		frame.getContentPane().add(lblRegister);
+		
+		JButton btnBack = new JButton("Back");
+		btnBack.setForeground(Color.BLACK);
+		btnBack.setFont(new Font("Tahoma", Font.BOLD, 18));
+		btnBack.setBackground(new Color(255, 0, 0));
+		btnBack.setAlignmentY(0.0f);
+		btnBack.setBounds(388, 418, 123, 48);
+		frame.getContentPane().add(btnBack);
+		
+		JLabel lblNewLabel_1 = new JLabel("OX");
+		lblNewLabel_1.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 99));
+		lblNewLabel_1.setForeground(new Color(255, 102, 0));
+		lblNewLabel_1.setBounds(61, 134, 158, 119);
+		frame.getContentPane().add(lblNewLabel_1);
+		
+		JLabel lblGame = new JLabel("Game");
+		lblGame.setForeground(new Color(255, 102, 0));
+		lblGame.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 30));
+		lblGame.setBounds(160, 230, 103, 48);
+		frame.getContentPane().add(lblGame);
+		
+		txtPass = new JPasswordField();
+		txtPass.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		txtPass.setBounds(518, 217, 193, 29);
+		frame.getContentPane().add(txtPass);
+		
+		txtRepass = new JPasswordField();
+		txtRepass.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		txtRepass.setBounds(518, 306, 193, 29);
+		frame.getContentPane().add(txtRepass);
+
+		
+	}
+}

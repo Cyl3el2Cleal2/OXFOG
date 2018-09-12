@@ -1,0 +1,74 @@
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class OXTest {
+    @Test
+    public void shouldCreatOXCoelctrty(){
+        OX ox=new OX();
+        assertEquals('X',ox.getCurrentPlayer());
+        assertEquals(0,ox.getScoreDraw());
+        assertEquals(0,ox.getScoreX());
+        assertEquals(0,ox.getScoreO());
+        assertEquals(0,ox.getRound());
+        assertEquals("  0 1 2\n0 - - -\n1 - - -\n2 - - -",ox.getTable());
+
+    }
+    @Test
+    public void put(){
+        OX ox =new OX();
+        ox.put(0,0);
+        assertEquals("  0 1 2\n0 X - -\n1 - - -\n2 - - -",ox.getTable());
+        ox.put(1,1);
+        assertEquals("  0 1 2\n0 X - -\n1 - X -\n2 - - -",ox.getTable());
+        ox.put(2,2);
+        assertEquals("  0 1 2\n0 X - -\n1 - X -\n2 - - X",ox.getTable());
+    }
+    @Test
+    public void switchPlayer(){
+        OX ox =new OX();
+        ox.put(0,0);
+        assertEquals("  0 1 2\n0 X - -\n1 - - -\n2 - - -",ox.getTable());
+        ox.switchPlayer();
+        ox.put(1,1);
+        assertEquals("  0 1 2\n0 X - -\n1 - O -\n2 - - -",ox.getTable());
+    }
+    @Test
+    public void checkWin(){
+
+        OX ox =new OX();
+        ox.put(0,0);
+        assertEquals("  0 1 2\n0 X - -\n1 - - -\n2 - - -",ox.getTable());
+        ox.put(1,1);
+        ox.put(2,2);
+        assertEquals("  0 1 2\n0 X - -\n1 - X -\n2 - - X",ox.getTable());
+        assertEquals(true,ox.checkWin());
+
+        OX ox2 =new OX();
+        ox2.put(2,0);
+        assertEquals("  0 1 2\n0 - - X\n1 - - -\n2 - - -",ox2.getTable());
+        ox2.put(1,1);
+        ox2.put(0,2);
+        assertEquals("  0 1 2\n0 - - X\n1 - X -\n2 X - -",ox2.getTable());
+        assertEquals(true,ox2.checkWin());
+
+        OX ox3 =new OX();
+        ox3.put(0,0);
+        assertEquals("  0 1 2\n0 X - -\n1 - - -\n2 - - -",ox3.getTable());
+        ox3.put(0,1);
+        ox3.put(0,2);
+        assertEquals("  0 1 2\n0 X - -\n1 X - -\n2 X - -",ox3.getTable());
+        assertEquals(true,ox3.checkWin());
+
+        OX ox4 =new OX();
+        ox4.put(0,0);
+        assertEquals("  0 1 2\n0 X - -\n1 - - -\n2 - - -",ox4.getTable());
+        ox4.put(1,0);
+        ox4.put(2,0);
+        assertEquals("  0 1 2\n0 X X X\n1 - - -\n2 - - -",ox4.getTable());
+        assertEquals(true,ox4.checkWin());
+    }
+
+
+
+}
