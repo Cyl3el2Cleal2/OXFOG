@@ -6,6 +6,6 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Window/Desktop/Java/zer0/lib/mongo-java-driver-2.13.3.jar"/>
+	<classpathentry kind="lib" path="lib/mongo-java-driver-2.13.3.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
