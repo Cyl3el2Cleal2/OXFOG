@@ -4,6 +4,8 @@ import org.bson.BSON;
 
 import com.mongodb.*;
 import com.mongodb.util.JSON;
+
+
 public class connect {
 private String url = "mongodb://ox:oxox@125.27.10.67:27017/OX";
 private MongoClient mongo =null;
@@ -12,7 +14,7 @@ DB db;
 		
 		try {
 			mongo = new MongoClient(new MongoClientURI(url));
-		} catch (UnknownHostException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
